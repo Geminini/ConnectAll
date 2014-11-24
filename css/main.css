@@ -1,0 +1,250 @@
+body {
+	font-family:Tahoma, Geneva, sans-serif;
+	//background-color: #1F6D8B;
+	
+	background-image: url(../images/background.jpg);
+	background-repeat:no-repeat;
+}
+
+#header {
+	background-image: url(../images/title.png);
+	background-repeat:no-repeat;
+	background-position: center;
+
+	//background-size:500px 100px;
+	height: 50px;
+	width: 700px;
+	margin:0 auto;
+}
+
+
+#content-wrapper {
+	min-height:90%;
+}
+
+#gameContainer {
+	height: 721px;
+	width: 726px;
+}
+
+
+#content {
+	height: 721px;
+	width: 726px;
+	padding:0px;
+	min-height:100%;
+	margin:0 auto;
+	//border:solid #ccc;
+	//border-width:0 1px;
+}
+
+#intro {
+	background-image: url(../images/intro.png);
+	background-repeat:no-repeat;
+	background-position: center;
+	vertical-align: middle;
+	height: 800px;
+	width: 726px;
+	//position: relative;
+	margin: 0 auto; 
+	//z-index: 10;
+	//float:left;
+	//display: inline-block;
+}
+
+#highScores{
+	background-image: url(../images/top10Bg.png);
+	height: 700px;
+	width: 726px;
+	//position:relative;
+	margin:0 auto;
+	z-index: 10;
+	background-repeat:no-repeat;
+	background-position: center;
+	vertical-align: middle;
+	color: #ffffff;
+	font-size: 30px;
+	font-family: "arial,sans-serif";
+}
+
+#highScores>ol{
+	position: relative;
+	top: 220px;
+	left: 150px;
+}
+
+
+
+#game {
+	margin: 0 auto;
+	width:726px;
+	height:721px;
+	//position: absolute; 
+	//float: left;
+
+	//position: absolute; 
+	background-image: url(../images/panel_dots.png);
+	background-repeat:no-repeat;
+	//background-position-: 0px 90px;
+	background-position: center bottom;
+
+	z-index: 9;
+	//top: 238px;
+	//height: 800px;
+	//width: 700px;
+}
+
+#gameScores {
+	margin-top: 20px;
+	//position:absolute;;
+	//float: right;
+	//top: 150px;
+	//left: 480px;
+	//width: 720px;
+}
+
+
+
+h1.score {
+	font-size:3em;
+	font-col:3em;
+	margin:0;
+}
+
+
+#divHighScores{
+	width: 550px;
+    float: left;
+    //padding: 10px;
+    text-align: center;
+	color:#EFFFFA;
+	vertical-align: middle;
+	vertical-align: -webkit-baseline-middle;
+	margin:0 auto;
+}
+
+
+
+#divRood{
+	float : right;
+	color:#EFFFFA;
+}
+
+#divGeel{
+	float : left;
+	color:#EFFFFA;
+}
+
+#scoreRood {
+	color:#d32829
+}
+#scoreGeel {
+	color:#fdcc09;
+}
+
+
+
+
+#gameOver {
+	height: 800px;
+	width: 726px;
+	//position:relative;
+	margin:0 auto;
+	z-index: 10;
+	background-repeat:no-repeat;
+	background-position: center;
+	vertical-align: middle;
+}
+
+.roodWins {
+	background-image: url(../images/gameOver-rood.png);
+}
+.geelWins {
+	background-image: url(../images/gameOver-geel.png);
+}
+.nobodyWins {
+	background-image: url(../images/gameOver.png);
+}
+
+
+
+.btn {
+  background: #636a4e;
+  background-image: -webkit-linear-gradient(top, #636a4e, #636a4e);
+  background-image: -moz-linear-gradient(top, #636a4e, #636a4e);
+  background-image: -ms-linear-gradient(top, #636a4e, #636a4e);
+  background-image: -o-linear-gradient(top, #636a4e, #636a4e);
+  background-image: linear-gradient(to bottom, #636a4e, #636a4e);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #98ab60;
+  background-image: -webkit-linear-gradient(top, #98ab60, #98ab60);
+  background-image: -moz-linear-gradient(top, #98ab60, #98ab60);
+  background-image: -ms-linear-gradient(top, #98ab60, #98ab60);
+  background-image: -o-linear-gradient(top, #98ab60, #98ab60);
+  background-image: linear-gradient(to bottom, #98ab60, #98ab60);
+  text-decoration: none;
+}
+
+
+.circle {
+  height: 100px;
+  width: 100px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: yellow;
+}
+.circle>span{
+	vertical-align: -webkit-baseline-middle;
+	position: relative;
+	top: 12px;
+
+	font-family: 'Corben', Georgia, Times, serif;
+    font-size: 40px;
+    line-height: 55px;
+	color: #d9e021;
+}
+
+
+#page-wrap { z-index: 20; width: 570px; margin: 20px auto; background: white; padding: 20px; position: relative; }
+
+.group:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+.group { display: inline-block; }
+/* start commented backslash hack \*/
+* html .group { height: 1%; }
+.group { display: block; }
+/* close commented backslash hack */
+
+h1, h2 { font-weight: normal; margin: 30px 0 10px 0; }
+p { margin: 0 0 10px 0; }
+pre { overflow: auto; padding: 10px; background: #eee; margin: 0 0 10px 0; }
+
+.top-demo div { top:35px; background: #ccc; width: 80px; height: 80px; float: left; -moz-border-radius: 40px; -webkit-border-radius: 40px; border-radius: 40px; }
+.top-demo div:nth-child(5n) { background: #FF9900; }
+.top-demo div:nth-child(5n+1) { background: #424242; }
+.top-demo div:nth-child(5n+2) { background: #E9E9E9; }
+.top-demo div:nth-child(5n+3) { background: #BCBCBC; }
+.top-demo div:nth-child(5n+4) { background: #3299BB; }
+
+
+.top-demo div:nth-child(10n) { left: 240px; }
+.top-demo div:nth-child(11n) { left: 240px; }
+.top-demo div:nth-child(12n) { left: 240px; }
+
+#sphere-area { height: 350px; position: relative; width: 100%; }
+#sphere-area img { width: 150px; height: 150px; position: absolute; top: 50px; left: 250px; }
+#sphere-area #blue-ball { opacity: 0; }
+#sphere-area #green-ball { opacity: 0; }
+
+#unicorn { z-index: 60; position: absolute; top: 40px; left: 44%; width: 110px; display: block; }

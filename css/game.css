@@ -1,0 +1,73 @@
+#game .top-row {
+	height:100px;
+	width:706px;
+	position:relative;
+}
+
+#game .column {
+	//border-right:1px solid #1F6D8B;
+	//border-bottom:1px solid #1F6D8B;
+	width:100px;
+	height:600px;
+	float:left;
+	position:relative
+}
+
+#game .column:last-child {
+	border-right:0px none;
+}
+
+#game .schijf {
+	height:80px;
+	width:80px;
+	position:absolute;
+	left:25px;
+	top:10px;
+	z-index: 8;
+	//opacity: .99;
+}
+
+#introCube .rood {
+	background:url(../images/redCube.png);
+}
+
+#introCube .geel {
+	background:url(../images/yellowCube.png);
+}
+
+
+
+#game .rood {
+	//background:url(../images/red.png);
+	background:url(../images/redCube.png);
+}
+
+#game .geel {
+	//background:url(../images/yellow.png);
+	background:url(../images/yellowCube.png);
+}
+
+
+#game .row1 {
+	top:10px;
+}
+
+#game .row2 {
+	top:110px;
+}
+
+#game .row3 {
+	top:210px;
+}
+
+#game .row4 {
+	top:310px;
+}
+
+#game .row5 {
+	top:410px;
+}
+
+#game .row6 {
+	top:510px;
+}
