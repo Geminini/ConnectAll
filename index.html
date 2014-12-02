@@ -1,121 +1,115 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <title>Connect'm all</title>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>Connect'm all</title>
 
-    <link rel="stylesheet" type="text/css" href="./css/main.css">
-    <link rel="stylesheet" type="text/css" href="./css/game.css">
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
 
-    <link rel="stylesheet" href="./css/alertify.core.css" />
-    <link rel="stylesheet" href="./css/alertify.default.css" id="toggleCSS" />
+        <link rel="stylesheet" href="./css/alertify.core.css" />
+        <link rel="stylesheet" href="./css/alertify.default.css" id="toggleCSS" />
 
-    <link href="http://fonts.googleapis.com/css?family=Corben:bold" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Nobile" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Corben:bold" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Nobile" rel="stylesheet" type="text/css">
 
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi">
-    <style>
-    .alertify-log-custom {
-        background: blue;
-    }
-    </style>
-</head>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi">
+    </head>
 
-<body>
-    
-    <div style="display:none">
-        <input type="button" id="btnSetInitHS" value="Set Init HS" onclick="setInitialHighScore()">
-        <input type="button" id="btnSetNewHS" value="Set New HS" onclick="setANewHighScore()">
-        <input type="button" id="btnGetHS" value="Get HS" onclick="GetHighScores()">
-        <input type="button" id="btnResetHS" value="RESET HS" onclick="resetInitialHighScore()">
-        <input type="button" id="btnInit" value="TREST" onclick="test()">
-    </div>
+    <body>
 
+        <div id="header"></div>
+        
+        <div id="content-wrapper">
 
-    <div id="header"></div>
-    
-    <div id="content-wrapper">
+            <!-- <img src="images/redCube.png" alt="A cubbe yo." id="circRedCube" />
+            <img src="images/yellowCube.png" alt="A cube" id="circYellowCube" />-->
 
-        <!-- <img src="images/redCube.png" alt="A Friggin Unicorn, yo." id="circRedCube" />
-        <img src="images/yellowCube.png" alt="A Friggin Unicorn, yo." id="circYellowCube" />-->
-
-
-        <div id="intro" class="top-demo group" style="display:none">
-
-            <div class="circle"><span>C</span></div>
-            <div class="circle"><span>o</span></div>
-            <div class="circle"><span>n</span></div>
-            <div class="circle"><span>n</span></div>
-            <div class="circle"><span>e</span></div>
-            <div class="circle"><span>c</span></div>
-            <div class="circle"><span>t</span></div>
-            <div class="circle"><span>'</span></div>
-            <div class="circle"><span>m</span></div>
-            <div class="circle"><span>a</span></div>
-            <div class="circle"><span>l</span></div>
-            <div class="circle"><span>l</span></div>
-            
-        </div>
-
-        <div id="gameOver" style="display:none"></div>
-
-        <div id="highScores" style="display:none">
-            <ol class="high-scores">
-            </ol>
-        </div>
-
-
-        <div id="content">
-            <div id="gameContainer">
-
-                <div id="game" style="display:none">
-                    <div class="top-row"></div>
-                    <div class="column"></div>
-                    <div class="column"></div>
-                    <div class="column"></div>
-                    <div class="column"></div>
-                    <div class="column"></div>
-                    <div class="column"></div>
-                    <div class="column"></div>
-                </div>
-
-                <div id="gameScores" style="display:none">
-                    <div id="divRood">
-                        Score Red: <h1 class="score" id="scoreRood">0</h1>
-                    </div>
-                    <div id="divGeel">
-                        Score Yellow: <h1 class="score" id="scoreGeel">0</h1>
-                    </div>
-                    <div id="divHighScores">
-                        <input type="button" id="btnSeeHighScores" value="High Scores" class="btn" onclick="viewHighScores(); return false;"/>
-                        <input type="button" id="btnRestart" value="Restart" class="btn" onclick="restartGame();" />
-                    </div>
-                </div>
-
+            <div id="intro" class="circles group" style="display:none">
+                <div class="circle"><span>C</span></div>
+                <div class="circle"><span>o</span></div>
+                <div class="circle"><span>n</span></div>
+                <div class="circle"><span>n</span></div>
+                <div class="circle"><span>e</span></div>
+                <div class="circle"><span>c</span></div>
+                <div class="circle"><span>t</span></div>
+                <div class="circle"><span>'</span></div>
+                <div class="circle"><span>m</span></div>
+                <div class="circle"><span>a</span></div>
+                <div class="circle"><span>l</span></div>
+                <div class="circle"><span>l</span></div>
+                
             </div>
+
+            <div id="gameOver" style="display:none"></div>
+
+            <div id="highScores" style="display:none">
+                <ol class="high-scores">
+                </ol>
+            </div>
+
+
+            <div id="content">
+                <div id="gameContainer">
+
+                    <div id="game" style="display:none">
+                        <div class="top-row"></div>
+                        <div class="column firstCol"></div>
+                        <div class="column"></div>
+                        <div class="column"></div>
+                        <div class="column"></div>
+                        <div class="column"></div>
+                        <div class="column"></div>
+                        <div class="column"></div>
+                    </div>
+
+                    <div id="gameScores" style="display:none">
+                        <div id="divRood">
+                            <div>Score Red:</div>
+                             <h1 class="score" id="scoreRood">0</h1>
+                        </div>
+                        <div id="divGeel">
+                            <div>Score Yellow:</div>
+                            <h1 class="score" id="scoreGeel">0</h1>
+                        </div>
+                        <div id="divHighScores">
+                            <input type="button" id="btnSeeHighScores" value="High Scores" class="btn" onclick="ViewHighScores(); return false;"/>
+                            <input type="button" id="btnRestart" value="Restart" class="btn" onclick="RestartGame();" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
 
-    </div>
+        <div id="testDiv" style="display:none">
+            <input type="button" id="btnCLeanUp" value="Cleanup HS" onclick="CleanUp()">
+            <input type="button" id="btnSetInitHS" value="Set Init HS" onclick="setInitialHighScore()">
+            <input type="button" id="btnSetNewHS" value="Set New HS" onclick="setANewHighScore()">
+            <input type="button" id="btnGetHS" value="Get HS" onclick="GetHighScores()">
+            <input type="button" id="btnResetHS" value="RESET HS" onclick="resetInitialHighScore()">
+            <input type="button" id="btnInit" value="TREST" onclick="test()">
+        </div>
 
-</body>
-
-
-<script type="text/javascript" src="./js/general.js"></script>
-<script type="text/javascript" src="./js/jquery.js"></script>
-<script type="text/javascript" src="./js/HighScores.js"></script>
-<script type="text/javascript" src="./js/game.js"></script>
-<script type="text/javascript" src="./js/countUp.js"></script>
-<script type="text/javascript" src="./js/store.min.js"></script>
-<script type="text/javascript" src="./js/alertify.min.js"></script>
-
-<script type='text/javascript' src='./js/jquery.easing.1.2.js'></script>
-<script type='text/javascript' src='./js/jquery.circulate.js'></script>
+    </body>
 
 
-<script>
-//init();
-</script>
+    <script type="text/javascript" src="./js/general.js"></script>
+    <script type="text/javascript" src="./js/jquery.js"></script>
+    <script type="text/javascript" src="./js/HighScores.js"></script>
+    <script type="text/javascript" src="./js/game.js"></script>
+    <script type="text/javascript" src="./js/countUp.js"></script>
+    <script type="text/javascript" src="./js/store.min.js"></script>
+    <script type="text/javascript" src="./js/alertify.min.js"></script>
+
+    <script type='text/javascript' src='./js/jquery.easing.1.2.js'></script>
+    <script type='text/javascript' src='./js/jquery.circulate.js'></script>
+
+
+    <script>
+    //init();
+    </script>
 
 </html>

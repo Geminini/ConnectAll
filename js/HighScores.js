@@ -6,17 +6,34 @@ function test()
 		alert("yes it does");
 }
 
-
+function CheckLocalStorage()
+{
+	if(typeof(Storage)!=="undefined")
+  	{
+  		// Yes! localStorage and sessionStorage support!
+  		return true;
+  	}
+	else
+  	{
+  		return false;
+  	}
+}
 
 function GetHighScoresArray()
 {
 	var hs = [];
+	
+	if( !CheckLocalStorage() )
+		return null;
+
 	var temp;
 	for(var i = 0; i<10; i++)
     {
-    	//user1,0
     	temp = store.get('hs:'+i);
-		hs[i] = temp.split(',')[1];
+    	if(temp != undefined)
+    	{
+    		hs[i] = temp.split(',')[1];
+    	}	
     }
     return hs;
 }
@@ -24,23 +41,37 @@ function GetHighScoresArray()
 function GetFullHighScoresArray()
 {
 	var hs = [];
+
+	if( !CheckLocalStorage() )
+		return null;
+
 	var temp;
 	for(var i = 0; i<10; i++)
     {
-    	//user1,0
-    	temp = store.get('hs:'+i).split(',');
-    	var name = temp[0].substring(0, 25);
-		hs[i] =  name + "\t(" + temp[1] + " pts)";
+    	temp = store.get('hs:'+i);
+    	
+    	if(temp != undefined)
+    	{
+    		temp = temp.split(',');
+
+    		var name = temp[0].substring(0, 25);
+			hs[i] =  name + "\t(" + temp[1] + " pts)";
+    	}
     }
     return hs;
 }
 
 function GetHighScores()
 {
+	if( !CheckLocalStorage() )
+		return null;
+
 	var hsList = '';
-	for(var i = 9; i>=0; i--)
+	for(var i = 0; i<10; i++)
     {
-		hsList += store.get('hs:'+i) + '\n';
+    	var temp = store.get('hs:'+i);
+    	if(temp != undefined)
+			hsList += store.get('hs:'+i) + '\n';
     }
 
 	var returnValue = hsList.substring(0, hsList.length - 1);
@@ -51,65 +82,102 @@ function GetHighScores()
 
 function IsTop10HighScore(aScore)
 {
-	var returnValue = false;
-	var top10array = GetHighScoresArray();
-
-	for(var i = 0; i<10; i++)
-    {
-    	if( aScore > parseInt(top10array[i]) )
-		{
-			returnValue = true;
-			break;
-		}
-    }
-
-    return returnValue;
+	return GetNewTop10HighScorePosition(aScore) > -1;
 }
 
 function GetNewTop10HighScorePosition(aScore)
 {
-	var returnValue = 0;
+	if( !CheckLocalStorage() )
+		return false;
 
+	var returnValue = -1;
 	var top10array = GetHighScoresArray();
 
-	for(var i = 9; i>=0; i--)
-    {
-    	if( aScore > parseInt(top10array[i]) )
-    	{
-			returnValue = i+1;
-			break;
-    	}
-    }
+	if((top10array != null || top10array != undefined) && top10array.length > 0)
+	{
+		for(var i = 0; i<10; i++)
+	    {
+	    	if( top10array[i] != undefined && top10array[i] != null)
+	    	{
+	    		if( aScore > parseInt(top10array[i]) )
+		    	{
+					returnValue = i+1;
+					break;
+		    	}
+	    	}
+	    	else
+	    	{
+	    		returnValue = i+1;
+				break;
+	    	}
+	    }
+	}
+	else
+	{
+		if( aScore > 0 )
+		{
+			returnValue = 1;
+		}
+	}
 
     return returnValue;
 }
 
 
-
-function SetNewHighScore(newHighScoreUserName, newHighScore)
+function SetNewHighScoreIfAny(newScore, winningColor)
 {
-	//alert("setNewHighScore");
+	returnValue = false;
 
-	if( newHighScore > 0 && IsTop10HighScore(newHighScore) )
+	if( IsTop10HighScore(newScore))
 	{
-		var newHighScorePosition = GetNewTop10HighScorePosition(newHighScore);
+		// prompt dialog
+		var winnerUserName;
 
-		var temp;
-		for(var i = 0; i<newHighScorePosition; i++)
-		{
-			temp = store.get('hs:'+(i+1));
-			store.set('hs:'+ i, temp);	
-		}	
+		alertify.prompt("New high score!!!\nPlease enter " + winningColor + " user name", function (e, str) {
+		    // str is the input text
+		    if (e) {
+		        // user clicked "ok"
+		        winnerUserName = str.substring(0, 25);
+		        
+				if(winnerUserName != '')
+				{
+					returnValue = true;
+        			setNewHighScore(winnerUserName, newScore)
+				}
 
-		store.set('hs:'+ (newHighScorePosition -1), newHighScoreUserName + ',' + newHighScore);	
+		    } else {
+		        // user clicked "cancel"
+		    }
+		}, "Harry Potter");	
 	}
+	return returnValue;
+}
+
+function setNewHighScore(newHighScoreUserName, newHighScore)
+{
+	if( !CheckLocalStorage() )
+		return false;
+
+
+	var newHighScorePosition = GetNewTop10HighScorePosition(newHighScore);
+	var temp;
+
+	for(var i = 9; i>=newHighScorePosition; i--)
+	{
+		temp = store.get('hs:'+(i-1));
+    	if(temp != undefined)
+    	{
+    		store.set('hs:'+ i, temp);
+    	}
+	}
+	store.set('hs:'+ (newHighScorePosition -1), newHighScoreUserName + ',' + newHighScore);	
 }
 
 
 
 function setInitialHighScore()
 {
-		//alert("setInitialHighScore");
+	//alert("setInitialHighScore");
 	for(var i = 0; i<10; i++)
     {
 		store.set('hs:'+i, 'User' + i + ',0');
@@ -122,6 +190,10 @@ function resetInitialHighScore()
 	setInitialHighScore();
 }
 
+function CleanUp()
+{
+	store.clear();
+}
 
 function init() {
 
