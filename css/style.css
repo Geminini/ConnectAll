@@ -115,14 +115,31 @@ h1.score {
 
 .roodWins {
 	background-image: url(../images/gameOver-rood.png);
+	background-repeat:no-repeat;
+	background-position: center;
+	vertical-align: middle;
+	margin: 0 auto;
+	width: 300px;
+	height: 600px;
 }
 .geelWins {
 	background-image: url(../images/gameOver-geel.png);
+	background-repeat:no-repeat;
+	background-position: center;
+	vertical-align: middle;
+	margin: 0 auto;
+	width: 300px;
+	height: 600px;
 }
 .nobodyWins {
 	background-image: url(../images/gameOver.png);
+	background-repeat:no-repeat;
+	background-position: center;
+	vertical-align: middle;
+	margin: 0 auto;
+	width: 300px;
+	height: 600px;
 }
-
 
 
 
@@ -309,7 +326,6 @@ h1.score {
 
 
 
-
 /* Desktops and laptops ----------- */
 @media only screen and (min-width : 1224px), only screen and (min-width : 1824px),
 /* iPads (landscape) ----------- */
@@ -415,10 +431,10 @@ only screen and (min-device-width : 768px) and (max-device-width : 1024px)
 
 
 /* iPhone 5 / Smartphones (portrait) ----------- */
-@media only screen and (-webkit-min-device-pixel-ratio : 1.5), 
+@media 
+only screen and (-webkit-min-device-pixel-ratio : 1.5), 
 only screen and (min-device-pixel-ratio : 1.5),
-only screen and (max-width : 320px),
-only screen and (min-device-width : 320px) and (max-device-width : 480px)
+only screen and (max-width : 320px) and (max-device-height : 568px)
 {
 	#intro {
 		background-image: url(../images/intro_small.png);
@@ -434,9 +450,10 @@ only screen and (min-device-width : 320px) and (max-device-width : 480px)
 		background-image: url(../images/title.png);
 		background-repeat:no-repeat;
 		background-position: center;
-		background-size:260px 50px;
+		background-size:260px 45px;
 		height: 50px;
-		margin:0 auto;
+		margin-top: 15px;
+		//margin:0 auto;
 	}
 
 	#content-wrapper {
@@ -478,22 +495,22 @@ only screen and (min-device-width : 320px) and (max-device-width : 480px)
 	}
 
 	#game .column {
-		width:44px;
-		height:325px;
+		width:45px;
+		height:320px;
 		float:left;
 		position:relative
 	}
 
 
 	#game .firstCol { 
-		margin-left: 10px;
+		margin-left: 5px;
 	}
 
 	#game .cube {
 		height:35px;
 		width:35px;
 		position:absolute;
-		left:2px;
+		left:3px;
 		top:0px;
 		z-index: 8;
 		//opacity: .99;
@@ -509,27 +526,27 @@ only screen and (min-device-width : 320px) and (max-device-width : 480px)
 
 
 	#game .row1 {
-		top:25px;
+		top:15px;
 	}
 
 	#game .row2 {
-		top:75px;
+		top:70px;
 	}
 
 	#game .row3 {
-		top:125px;
+		top:120px;
 	}
 
 	#game .row4 {
-		top:175px;
+		top:170px;
 	}
 
 	#game .row5 {
-		top:225px;
+		top:220px;
 	}
 
 	#game .row6 {
-		top:275px;
+		top:270px;
 	}
 
 
@@ -596,7 +613,7 @@ only screen and (min-device-width : 320px) and (max-device-width : 480px)
 		color: #d9e021;
 	}
 	.circles div { 
-		top:0px; 
+		top:25px; 
 		background: #ccc; 
 		width: 33px; 
 		height: 33px; 
@@ -626,12 +643,40 @@ only screen and (min-device-width : 320px) and (max-device-width : 480px)
 	  text-decoration: none;
 	}
 
+
+	#gameOver {
+		width: 300px;
+		height: 520px;
+		margin:0 auto;
+		background-repeat:no-repeat;
+		background-position: center;
+		vertical-align: middle;
+	}
+
+	.roodWins {
+		background-image: url(../images/gameOver-rood_small.png);
+	}
+	.geelWins {
+		background-image: url(../images/gameOver-geel_small.png);
+	}
+	.nobodyWins {
+		background-image: url(../images/gameOver_small.png);
+	}
+
 }
 
 
+
 /* iPhone 4 ----------- */
-@media screen and (device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)
+@media  only screen and (min-device-width : 300px) and (max-device-width : 320px) and (max-device-height: 480px) 
 {
+	#header {
+		height: 25px;
+		background-size: 220px 30px;
+		margin-top:5px;
+		//margin:0 auto;
+	}
+
 	#gameScores {
 		height:80px;
 		margin: 0 auto;
@@ -641,7 +686,7 @@ only screen and (min-device-width : 320px) and (max-device-width : 480px)
 	/* Alertify \*/
 	.btn {
 	  font-size: 13px;
-	  padding: 6px 10px 10px 10px;
+	  padding: 6px 10px 6px 10px;
 	  text-decoration: none;
 	}
 

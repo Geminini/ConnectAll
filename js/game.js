@@ -153,16 +153,36 @@ $(function() {
 		// Laat de cube vallen als de kolom nog niet vol zit:
 		if (row >= 1) {
 			
+			var deviceTopOffset = 40;
+			var deviceLeftOffset = 0;
+
+			if ( isiPad() )
+			{
+				deviceTopOffset = 25;
+				deviceLeftOffset = 7;
+			}
+
+			if ( isiPhone5() )
+			{
+				if(row != 1)
+					deviceTopOffset = 40;
+				deviceLeftOffset = 3;
+			}
+
 			// offset for cube to animate to
-			var left = (iColWidth * column) - iCubeSize -iMarginleft + 5 + (column*1.5) ;  //+ (iMarginleft/2); // iColWidth = 72 en iCubeSize =  65
+			var left = (iColWidth * column) - iCubeSize -iMarginleft + deviceLeftOffset;//+ 5 + (column*1.5) ;  //+ (iMarginleft/2); // iColWidth = 72 en iCubeSize =  65
 			//alert(left);
-			var top = row * iColWidth + 30; //row * (iColWidth)70 + 30;
-			var topcss = "#game .row" + column;
+
+
+
+			var top = row * iColWidth + deviceTopOffset; 
+			//var topcss = "#game .row" + column;
+			//alert(topcss);
 			//var top = parseInt( $(topcss).css("top") );
 			//alert(topcss + "\n" + top);
 
 			// animate cube tot zijn positie in de kolom
-			$("#game div.top-row div.cube").animate({left: left, top: top}, 500, function() {
+			$("#game div.top-row div.cube").animate({left: left, top: top}, 400, function() {
 				// create new cube
 				$("<div></div>").addClass("cube " + beurt + " row" + row).appendTo($("#game div.column").eq(column - 1));
 				
