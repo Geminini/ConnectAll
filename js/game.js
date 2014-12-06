@@ -171,11 +171,8 @@ $(function() {
 
 			// offset for cube to animate to
 			var left = (iColWidth * column) - iCubeSize -iMarginleft + deviceLeftOffset;//+ 5 + (column*1.5) ;  //+ (iMarginleft/2); // iColWidth = 72 en iCubeSize =  65
-			//alert(left);
-
-
-
 			var top = row * iColWidth + deviceTopOffset; 
+			
 			//var topcss = "#game .row" + column;
 			//alert(topcss);
 			//var top = parseInt( $(topcss).css("top") );
