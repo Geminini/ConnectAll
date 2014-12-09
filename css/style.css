@@ -363,7 +363,7 @@ only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (
 		background-repeat:no-repeat;
 		background-position: center;
 		//background-size:500px 100px;
-		height: 50px;
+		height: 100px;
 		margin:0 auto;
 	}
 
@@ -376,7 +376,7 @@ only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (
 	}
 
 	#gameContainer {
-		height: 550px;
+		height: 650px;
 		width: 545px;
 	}
 
@@ -391,6 +391,10 @@ only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (
 		z-index: 9;
 	}
 	
+	#divHighScores{
+		margin-top: 70px;
+	}
+
 	#highScores{
 		background-image: url(../images/top10Bg.png);
 		height: 700px;
