@@ -43,11 +43,12 @@ $(function() {
 				{
 					$(".top-row").addClass("dropHere");
 					window.setTimeout(function(){
-						//$(".top-row").removeClass("dropHere");
+
 						$(".top-row").animate({opacity: 0.0}, 1000, function(){
 							$(".top-row").removeClass("dropHere");
 							$(".top-row").animate({opacity: 1.0}, 1);
 						});
+
 					}, 5000);
 				}
 
@@ -455,7 +456,6 @@ $(function() {
 						$("#gameOver").addClass( "nobodyWins" ).fadeIn("slow");
 					}
 
-
 					$("#gameOver").click(function() {
 						if( somebodyWins )
 							SetNewHighScoreIfAny(winningScore, winnerColor);
@@ -537,6 +537,8 @@ function showGame()
 {
 	$("#gameContainer").fadeIn("fast");
 	$("#game").fadeIn("fast");
+	$("#gameScores").fadeIn("fast");
+
 }
 
 function hideGameOver()

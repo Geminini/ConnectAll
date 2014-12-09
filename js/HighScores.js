@@ -156,6 +156,7 @@ function SetNewHighScoreIfAny(newScore, winningColor)
 		        
 				if(winnerUserName != '')
 				{
+					returnValue = true;
         			setNewHighScore(winnerUserName, newScore);
         			redirectAfterGame(returnValue);
 				}
