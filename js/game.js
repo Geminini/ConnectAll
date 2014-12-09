@@ -13,6 +13,7 @@ $(window).load(function() {
             width: Math.floor(Math.random()*1000) - 470
         });
     });
+
 });
 
 $(function() {
@@ -37,6 +38,19 @@ $(function() {
 				$("#game").fadeIn("slow");
 				$("#gameScores").fadeIn("slow");
 				$("#header").fadeIn("slow");
+
+				if(showDropHere())
+				{
+					$(".top-row").addClass("dropHere");
+					window.setTimeout(function(){
+						//$(".top-row").removeClass("dropHere");
+						$(".top-row").animate({opacity: 0.0}, 1000, function(){
+							$(".top-row").removeClass("dropHere");
+							$(".top-row").animate({opacity: 1.0}, 1);
+						});
+					}, 5000);
+				}
+
 			});
 	});
 
@@ -48,11 +62,6 @@ $(function() {
 			});
 	});
 
-
-	$("#gameOver").click(function() {
-		RestartGame();
-	});
-
 	$(".btnRestart").click(function() {
 		RestartGame();
 	});
@@ -60,9 +69,6 @@ $(function() {
 	$(".btnSeeHighScores").click(function() {
 		ViewHighScores();
 	});
-
-
-
 
 
 
@@ -153,21 +159,34 @@ $(function() {
 		// Laat de cube vallen als de kolom nog niet vol zit:
 		if (row >= 1) {
 			
-			var deviceTopOffset = 40;
-			var deviceLeftOffset = 0;
+			var deviceTopOffset = 27;
+			var deviceLeftOffset = 8;
 
 			if ( isiPad() )
 			{
 				deviceTopOffset = 25;
-				deviceLeftOffset = 7;
+				deviceLeftOffset = 7;	
+				
 			}
-
-			if ( isiPhone5() )
+			else if ( isiPhone5() )
 			{
 				if(row != 1)
 					deviceTopOffset = 40;
+
 				deviceLeftOffset = 3;
 			}
+			else if ( isiPhone4() )
+			{
+				deviceLeftOffset = 0;
+				if(row == 1)
+					deviceLeftOffset = 0;
+				else if(row > 1 && row <= 3)
+					deviceTopOffset = 35;
+				else
+					deviceTopOffset = 55;
+				
+			}
+			
 
 			// offset for cube to animate to
 			var left = (iColWidth * column) - iCubeSize -iMarginleft + deviceLeftOffset;//+ 5 + (column*1.5) ;  //+ (iMarginleft/2); // iColWidth = 72 en iCubeSize =  65
@@ -412,35 +431,37 @@ $(function() {
 
 					var winnerUserName = '';
 					var winnerColor = '';
+					var somebodyWins = false;
+
 
 					if( scoreYellow > scoreRed )
 					{
+						somebodyWins = true;
 						winnerColor = 'YELLOW';
 						winningScore = scoreYellow;
 
-						$("#gameOver").addClass( "geelWins" ).fadeIn("slow").delay(1500).queue(
-																						function()
-																						{ 
-																							SetNewHighScoreIfAny(winningScore, winnerColor);
-																							ViewHighScores();
-																						});
+						$("#gameOver").addClass( "geelWins" ).fadeIn("slow");
 					}
 					else if(scoreRed > scoreYellow )
 					{
+						somebodyWins = true;
 						winnerColor = 'RED';
 						winningScore = scoreRed;
-						$("#gameOver").addClass( "roodWins" ).fadeIn("slow").delay(1500).queue(
-																						function()
-																						{ 
-																							SetNewHighScoreIfAny(winningScore, winnerColor);
-																							ViewHighScores();
-																						});
+
+						$("#gameOver").addClass( "roodWins" ).fadeIn("slow");
 					}
 					else 
 					{
 						$("#gameOver").addClass( "nobodyWins" ).fadeIn("slow");
 					}
 
+
+					$("#gameOver").click(function() {
+						if( somebodyWins )
+							SetNewHighScoreIfAny(winningScore, winnerColor);
+						else
+							redirectAfterGame(false);
+					});
 				}
 
 				
@@ -485,6 +506,8 @@ function RestartGame()
 function ViewHighScores()
 {
 	hideGame();
+	hideGameOver();
+	
 	$("#highScores").fadeIn("slow");
 	//var high_scores = $("#high-scores");
 	var high_scores = document.querySelector("#highScores ol.high-scores");
@@ -513,8 +536,31 @@ function hideGame()
 function showGame()
 {
 	$("#gameContainer").fadeIn("fast");
+	$("#game").fadeIn("fast");
 }
 
+function hideGameOver()
+{
+	$("#gameOver").fadeOut("fast");
+}
+
+
+function showDropHere()
+{
+	if( !CheckLocalStorage() )
+		return false;
+
+	var returnValue = true;
+
+    var temp = store.get('ConmAllFT');
+    if(temp == undefined)
+    {
+		returnValue = true;
+		store.set('ConmAllFT', 1);
+    }
+
+    return returnValue;
+}
 
 function setANewHighScore()
 {
@@ -537,5 +583,13 @@ function setANewHighScore()
 	    }
 	}, newHighScore);
 
+}
+
+function redirectAfterGame(isTop10)
+{
+	if(isTop10)
+    	ViewHighScores();
+    else
+		RestartGame();
 }
 	

@@ -1,4 +1,19 @@
 
+function testGameOver()
+{
+	$("#gameOver").addClass( "geelWins" ).fadeIn("slow");
+
+	$("#gameOver").click(function() {
+						//debugger;
+						var aScore = 1234;
+						var isTop10 = IsTop10HighScore(aScore);
+
+						SetNewHighScoreIfAny(1256, "RED");
+					});
+}
+
+
+
 function test()
 {
 	var str = window.location+'';
@@ -141,15 +156,17 @@ function SetNewHighScoreIfAny(newScore, winningColor)
 		        
 				if(winnerUserName != '')
 				{
-					returnValue = true;
-        			setNewHighScore(winnerUserName, newScore)
+        			setNewHighScore(winnerUserName, newScore);
+        			redirectAfterGame(returnValue);
 				}
 
 		    } else {
 		        // user clicked "cancel"
+		        redirectAfterGame(returnValue);
+		        
 		    }
 		}, "Harry Potter");	
-	}
+	}			    
 	return returnValue;
 }
 
@@ -172,7 +189,6 @@ function setNewHighScore(newHighScoreUserName, newHighScore)
 	}
 	store.set('hs:'+ (newHighScorePosition -1), newHighScoreUserName + ',' + newHighScore);	
 }
-
 
 
 function setInitialHighScore()

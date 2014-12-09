@@ -25,6 +25,22 @@ body {
 	margin:0 auto;
 }
 
+.noDropHere {
+	background-image: none;
+}
+.dropHere {
+	
+	background-image: url(../images/dropHere.png);
+	background-size: 300px 50px;
+	background-repeat:no-repeat;
+	background-position:center;
+	//vertical-align: middle;
+	margin:0 auto;
+	width:300px;
+	height:50px;
+	//z-index: +1;
+}
+
 #game {
 	margin: 0 auto;
 	width:520px;
@@ -327,9 +343,10 @@ h1.score {
 
 
 /* Desktops and laptops ----------- */
-@media only screen and (min-width : 1224px), only screen and (min-width : 1824px),
 /* iPads (landscape) ----------- */
-only screen and (min-device-width : 768px) and (max-device-width : 1024px) 
+@media only screen and (min-width : 1224px), only screen and (min-width : 1824px),
+only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (-webkit-min-device-pixel-ratio: 1),
+only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (-webkit-min-device-pixel-ratio: 2)
 {
 
 	#intro {
@@ -430,11 +447,8 @@ only screen and (min-device-width : 768px) and (max-device-width : 1024px)
 
 
 
-/* iPhone 5 / Smartphones (portrait) ----------- */
-@media 
-only screen and (-webkit-min-device-pixel-ratio : 1.5), 
-only screen and (min-device-pixel-ratio : 1.5),
-only screen and (max-width : 320px) and (max-device-height : 568px)
+/* iPhone 5 / Smartphones (portrait & landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) 
 {
 	#intro {
 		background-image: url(../images/intro_small.png);
@@ -666,6 +680,20 @@ only screen and (max-width : 320px) and (max-device-height : 568px)
 }
 
 
+/* iPhone 6 ----------- */
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2)
+{
+	#gameContainer {
+		width: 380px;
+	}
+}
+
+@media only screen and (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3) 
+{
+	#gameContainer {
+		width: 420px;
+	}
+}
 
 /* iPhone 4 ----------- */
 @media  only screen and (min-device-width : 300px) and (max-device-width : 320px) and (max-device-height: 480px) 
