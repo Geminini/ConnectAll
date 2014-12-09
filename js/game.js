@@ -457,8 +457,14 @@ $(function() {
 					}
 
 					$("#gameOver").click(function() {
-						if( somebodyWins )
+						if( somebodyWins && IsTop10HighScore(winningScore) )
+						{
 							SetNewHighScoreIfAny(winningScore, winnerColor);
+
+							$("#gameOver").click(function() {
+								redirectAfterGame(true);
+							});
+						}
 						else
 							redirectAfterGame(false);
 					});
