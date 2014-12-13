@@ -18,6 +18,8 @@ $(window).load(function() {
 
 $(function() {
 
+	
+
 	var winLocation = window.location.href;
 	winLocation = winLocation.split("?");
 	if( winLocation.length == 1 )
